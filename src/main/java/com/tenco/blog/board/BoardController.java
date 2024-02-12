@@ -39,12 +39,16 @@ public class BoardController {
         return "board/list";
     }
 
-    @GetMapping("/updateForm/{id}")
-    public String updateForm(@PathVariable Integer id, Model model) {
-    	
-    	 Board post = boardService.getBoardById(id);
-    	    model.addAttribute("post", post);
-    	    return "board/updateForm";
+    @GetMapping("/update/{id}")
+    public String updateForm(@PathVariable Integer id) {
+        
+    	Board board = boardService.getBoardById(id);
+        BoardDto boardDto = new BoardDto();
+        boardDto.setAuthor(board.getAuthor());
+        boardDto.setTitle(board.getTitle());
+        boardDto.setContent(board.getContent());
+        
+         return "board/update";
     }
 
     @PostMapping("/save")

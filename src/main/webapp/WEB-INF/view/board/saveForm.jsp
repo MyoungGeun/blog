@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ include file="/WEB-INF/view/layout/header.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +18,10 @@
                     <input type="text" class="form-control" placeholder="작성자" name="author" maxlength="10">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" placeholder="제목 (20글자 이하)" name="title" maxlength="20">
+                    <input type="text" class="form-control" placeholder="제목" name="title" maxlength="20">
                 </div>
                 <div class="mb-3">
-                    <textarea class="form-control" rows="5" name="content" maxlength="20" placeholder="20글자까지 작성 가능"></textarea>
+                    <textarea class="form-control" rows="5" name="content" maxlength="20"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary form-control">글쓰기완료</button>
             </form>
