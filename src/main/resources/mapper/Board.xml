@@ -21,7 +21,7 @@
 	</select>
 	
 	<select id="findById" resultType="com.tenco.blog.entity.Board">
-		select * form board where id = #{id}
+		select * from board where id = #{id}
 	</select>
 		
 </mapper>

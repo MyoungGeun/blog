@@ -36,7 +36,7 @@
                     <form action="/board/delete/${post.id}" method="post">
                         <button class="btn btn-danger">삭제</button>
                     </form>
-                    <form action="/board/update/${post.id}" method="get">
+                    <form action="/board/update/${post.id}">
                         <button class="btn btn-warning">수정</button>
                         
                     </form>
@@ -48,31 +48,5 @@
     </table>
 </div>
 </form>
-<script>
-    $(document).ready(function() {
-        $(".updateBtn").click(function(event) {
-            event.preventDefault(); // 기본 동작 중단
-            var postId = $(this).data("id"); // 수정할 글의 ID 가져오기
-            
-            // AJAX 요청
-            $.ajax({
-                type: "GET",
-                url: "/board/update/" + postId, // 수정할 글의 내용을 가져올 경로
-                success: function(response) {
-                    // AJAX 요청 성공 시 모달 창에 글 내용 표시
-                    $("#updateModal").modal("show");
-                    $("#updateForm").attr("action", "/board/update/" + postId); // 수정할 글의 ID를 포함한 수정 액션 URL 설정
-                    $("#author").val(response.author); // 작성자 필드에 가져온 작성자 정보 설정
-                    $("#title").val(response.title); // 제목 필드에 가져온 제목 정보 설정
-                    $("#content").val(response.content); // 내용 필드에 가져온 내용 정보 설정
-                },
-                error: function(xhr, status, error) {
-                    // AJAX 요청 실패 시 처리
-                    alert("글 내용을 가져오는 중 오류가 발생했습니다.");
-                }
-            });
-        });
-    });
-</script>
 </body>
 </html>

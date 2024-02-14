@@ -51,6 +51,7 @@ public class BoardService {
 	@Transactional
 	public void updateBoard(Integer id, BoardDto dto) {
 		Board board = Board.builder()
+				.id(id)
 				.author(dto.getAuthor())
 				.title(dto.getTitle())
 				.content(dto.getContent())

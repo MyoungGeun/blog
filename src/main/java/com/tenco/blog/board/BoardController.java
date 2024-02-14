@@ -40,7 +40,7 @@ public class BoardController {
     }
 
     @GetMapping("/update/{id}")
-    public String updateForm(@PathVariable Integer id) {
+    public String updateForm(@PathVariable Integer id, Model model) {
         
     	Board board = boardService.getBoardById(id);
         BoardDto boardDto = new BoardDto();
@@ -48,7 +48,8 @@ public class BoardController {
         boardDto.setTitle(board.getTitle());
         boardDto.setContent(board.getContent());
         
-         return "board/update";
+        model.addAttribute("board", board);
+        return "board/update";
     }
 
     @PostMapping("/save")
@@ -69,6 +70,7 @@ public class BoardController {
     public String update(@PathVariable Integer id, BoardDto dto){
     	
     	boardService.updateBoard(id, dto);
+    	
         return "redirect:/board/list";
     }
 
